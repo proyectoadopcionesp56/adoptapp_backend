@@ -30,10 +30,12 @@ class RequestPetSerializer(serializers.ModelSerializer):
 
     def to_representation(self, obj):
         requestPet = RequestPet.objects.get(id=obj.id)
+        user = User.objects.get(id=requestPet.user)
+        pet = Pet.objects.get(id=requestPet.pet)
         return {
             'id': requestPet.id,
-            'user': requestPet.user,
-            'pet': requestPet.pet,
+            'user': user,
+            'pet': pet,
             'created_at': requestPet.created_at,
             'request_kind': requestPet.request_kind,
             'finalized_at': requestPet.finalized_at,
