@@ -92,16 +92,7 @@ WSGI_APPLICATION = 'adoptapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-     'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'd22h3erg6p4dks',
-            'USER': 'etizqrthpikmkk',
-            'PASSWORD': '151d93526914284f5e999e37ea2409a17e44c2b5badf9572b89d39ba3c69852b',
-            'HOST': 'ec2-44-199-83-229.compute-1.amazonaws.com',
-            'PORT': '5432',
-        }
-}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
