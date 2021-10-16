@@ -1,1 +1,1 @@
-web: gunicorn authadoptapp.wsgi
+web: gunicorn adoptapp.wsgi
