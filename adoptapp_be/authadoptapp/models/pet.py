@@ -12,7 +12,7 @@ class Pet(models.Model):
         REGISTERED = 'RG', ('Registered')
         REQUESTED = 'RQ', ('Requested')
         ADOPTED = 'AP', ('Adopted')
-        RETIRED = 'RT', ('Registered')
+        RETIRED = 'RT', ('Retired')
 
     id = models.AutoField(primary_key=True)
     name = models.CharField('Name', max_length=30)
