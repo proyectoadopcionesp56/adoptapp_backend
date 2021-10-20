@@ -32,7 +32,6 @@ class RequestPetSerializer(serializers.ModelSerializer):
         requestPet = RequestPet.objects.get(id=obj.id)
         user = User.objects.get(id=requestPet.user)
         pet = Pet.objects.get(id=requestPet.pet)
-        
         return {
             'id': requestPet.id,
             'user': user,
