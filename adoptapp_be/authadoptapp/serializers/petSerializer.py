@@ -1,5 +1,6 @@
 from authadoptapp.models.pet import Pet
 from rest_framework import serializers
+from rest_framework.response import Response
 
 
 class PetSerializer(serializers.ModelSerializer):
@@ -61,3 +62,6 @@ class PetSerializer(serializers.ModelSerializer):
             'created_at': pet.created_at,
             'updated_at': pet.updated_at
         }
+
+    def delete(self, request, pk, format=None):
+        instance = Pet.objects.get(id=pk).delete()

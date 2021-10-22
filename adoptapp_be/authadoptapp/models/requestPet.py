@@ -16,4 +16,4 @@ class RequestPet(models.Model):
     request_kind = models.CharField(
         max_length=2,
         choices=RequestKind.choices)
-    finalized_at = models.DateTimeField()
+    finalized_at = models.DateTimeField(null=True, blank=True)
