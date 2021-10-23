@@ -40,8 +40,6 @@ class RequestPetSerializer(serializers.ModelSerializer):
 
     def to_representation(self, obj):
         requestPet = RequestPet.objects.get(id=obj.id)
-        # user = User.objects.get(id=requestPet.user.id)
-        # pet = Pet.objects.get(id=requestPet.pet.id)
 
         image_url = ""
         if(requestPet.pet.image.url):
@@ -68,7 +66,7 @@ class RequestPetSerializer(serializers.ModelSerializer):
                 # 'deworming': pet.deworming,
                 # 'dewormer': pet.dewormer,
                 # 'history': pet.history,
-                # 'status': pet.status,
+                'status': requestPet.pet.status,
                 'image': image_url,
                 # 'created_at': pet.created_at,
                 # 'updated_at': pet.updated_at
