@@ -1,5 +1,6 @@
 from authadoptapp.models.pet import Pet
 from rest_framework import serializers
+from rest_framework.response import Response
 
 
 class PetSerializer(serializers.ModelSerializer):
@@ -23,7 +24,10 @@ class PetSerializer(serializers.ModelSerializer):
             'deworming',
             'dewormer',
             'history',
-            'status'
+            'status',
+            'created_at',
+            'updated_at',
+            'image'
         ]
 
     def create(self, validated_data):
@@ -32,6 +36,9 @@ class PetSerializer(serializers.ModelSerializer):
 
     def to_representation(self, obj):
         pet = Pet.objects.get(id=obj.id)
+        image_url = ""
+        if(pet.image.url):
+            image_url = pet.image.url
         return {
             'id': pet.id,
             'name': pet.name,
@@ -51,4 +58,10 @@ class PetSerializer(serializers.ModelSerializer):
             'dewormer': pet.dewormer,
             'history': pet.history,
             'status': pet.status,
+            'image': image_url,
+            'created_at': pet.created_at,
+            'updated_at': pet.updated_at
         }
+
+    def delete(self, request, pk, format=None):
+        instance = Pet.objects.get(id=pk).delete()

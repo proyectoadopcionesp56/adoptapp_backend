@@ -1,16 +1,16 @@
 from rest_framework import status, views
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from authadoptapp.serializers.petSerializer import PetSerializer
+from authadoptapp.serializers.requestPetSerializer import RequestPetSerializer
 from rest_framework.permissions import IsAuthenticated
 
 
-class PetCreateView(views.APIView):
-    serializer_class = PetSerializer
+class RequestPetCreateView(views.APIView):
+    serializer_class = RequestPetSerializer
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
-        serializer = PetSerializer(data=request.data)
+        serializer = RequestPetSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         res = serializer.save()
 

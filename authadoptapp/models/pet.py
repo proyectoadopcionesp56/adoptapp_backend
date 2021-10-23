@@ -12,7 +12,7 @@ class Pet(models.Model):
         REGISTERED = 'RG', ('Registered')
         REQUESTED = 'RQ', ('Requested')
         ADOPTED = 'AP', ('Adopted')
-        RETIRED = 'RT', ('Retired')
+        RETIRED = 'RT', ('Registered')
 
     id = models.AutoField(primary_key=True)
     name = models.CharField('Name', max_length=30)
@@ -40,5 +40,7 @@ class Pet(models.Model):
         choices=Status.choices,
         default=Status.REGISTERED,
     )
+    image = models.ImageField(
+        null=True, blank=True, upload_to="images/", default="images/default.jpg")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

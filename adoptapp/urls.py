@@ -18,6 +18,9 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView, TokenRefreshView)
 from authadoptapp import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
@@ -26,5 +29,7 @@ urlpatterns = [
     path('pet/update/<int:pk>/', views.PetUpdateView.as_view()),
     path('pet/detail/<int:pk>/', views.PetDetailView.as_view()),
     path('pet/details/', views.PetDetailsView.as_view()),
+    path('requestPet/', views.RequestPetCreateView.as_view()),
+    path('requestPet/details/', views.RequestPetDetailsView.as_view()),
     path('user/<int:pk>/', views.UserDetailView.as_view()),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
