@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Pet(models.Model):
+    
+    defaultValue="No Aplica"
 
     class Sizes(models.TextChoices):
         LARGE = 'LG', ('Large')
@@ -28,12 +30,12 @@ class Pet(models.Model):
     cohabitation_animals = models.BooleanField('cohabitation_animals')
     cohabitation_kids = models.BooleanField('cohabitation_kids')
     pathologies = models.BooleanField('pathologies')
-    diseases_drugs = models.CharField('diseases_drugs', max_length=300)
+    diseases_drugs = models.CharField('diseases_drugs', max_length=300, default=defaultValue)
     sterilized = models.BooleanField('sterilized')
     vaccinated = models.BooleanField('vaccinated')
-    vaccines = models.CharField('vaccines', max_length=300)
+    vaccines = models.CharField('vaccines', max_length=300, default=defaultValue)
     deworming = models.BooleanField('deworming')
-    dewormer = models.CharField('dewormer', max_length=300)
+    dewormer = models.CharField('dewormer', max_length=300, default=defaultValue)
     history = models.CharField('history', max_length=400)
     status = models.CharField(
         max_length=2,
