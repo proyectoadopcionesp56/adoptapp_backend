@@ -16,7 +16,7 @@ class PetUpdateView(views.APIView):
 
     def put(self, request, pk, format=None):
         pet = self.get_object(pk)
-        serializer = PetSerializer(pet, data=request.data)
+        serializer = PetSerializer(pet, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
